@@ -25,13 +25,8 @@ The goals / steps of this project are the following:
 [v4]: ./output_images/v4.png
 [v5]: ./output_images/v5.png
 [v6]: ./output_images/v6.png
-
-
-
 [video1]: ./project_video.mp4
 
-## [Rubric](https://review.udacity.com/#!/rubrics/513/view) Points
-###Here I will consider the rubric points individually and describe how I addressed each point in my implementation.  
 
 ---
 ###Writeup / README
