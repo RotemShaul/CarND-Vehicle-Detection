@@ -1,3 +1,5 @@
+## All code below is taken from the course class with minor changes at times.
+
 import matplotlib.image as mpimg
 import numpy as np
 import cv2
