@@ -19,8 +19,12 @@ The goals / steps of this project are the following:
 [heatmap]: ./output_images/heatmap.png
 [labels]: ./output_images/labels.png
 [carboxesfinal]: ./output_images/carboxesfinal.png
-[image7]: ./output_images/output_bboxes.png
-[image7]: ./output_images/output_bboxes.png
+[v1]: ./output_images/v1.png
+[v2]: ./output_images/v2.png
+[v3]: ./output_images/v3.png
+[v4]: ./output_images/v4.png
+[v5]: ./output_images/v5.png
+[v6]: ./output_images/v6.png
 
 
 
@@ -62,20 +66,16 @@ I wanted to add both the spatial and color histo for the feature vector (enablin
 
 ####3. Describe how (and identify where in your code) you trained a classifier using your selected HOG features (and color features if you used them).
 
-I trained a linear SVM using the following hyper parameter for feature extraction: 
-#Training Hyperparameters
-color_space = 'YCrCb' # Can be RGB, HSV, LUV, HLS, YUV, YCrCb
-orient = 13  # HOG orientations
-pix_per_cell = 16 # HOG pixels per cell
-cell_per_block = 2 # HOG cells per block
-hog_channel = "ALL" # Can be 0, 1, 2, or "ALL"
-spatial_size = (16, 16) # Spatial binning dimensions
-hist_bins = 32    # Number of histogram bins
-spatial_feat = False # Spatial features on or off
-hist_feat = False # Histogram features on or off
-hog_feat = True # HOG features on or off
-y_start_stop = [None, None] # Min and max in y to search in slide_window()
-test_set_size = 0.2
+I trained a linear SVM using the following hyper parameter for feature extraction:  
+  color_space = 'YCrCb'
+  orient = 13  # HOG orientations  
+  pix_per_cell = 16 # HOG pixels per cell  
+  cell_per_block = 2 # HOG cells per block  
+  hog_channel = "ALL" 
+  spatial_feat = False # Spatial features on or off  
+  hist_feat = False # Histogram features on or off  
+  hog_feat = True # HOG features on or off  
+  test_set_size = 0.2  
 
 This code can be found in the ipynb in cell number 5 and in 'extract_features' method in utils.py
 
@@ -109,25 +109,20 @@ Here's a [link to my video result](./project_video_out.mp4)
 I recorded the positions of positive detections in each frame of the video.  From the positive detections I created a heatmap and then thresholded that map to identify vehicle positions.  I then used `scipy.ndimage.measurements.label()` to identify individual blobs in the heatmap.  I then assumed each blob corresponded to a vehicle.  I constructed bounding boxes to cover the area of each blob detected.  
 Here's an example result showing the heatmap from a series of frames of video, the result of `scipy.ndimage.measurements.label()` and the bounding boxes then overlaid on the last frame of video:
 
-### Here are six frames and their corresponding heatmaps:
+### Here are six frames and their corresponding heatmaps, labels and output:
 
-![alt text][image5]
-
-### Here is the output of `scipy.ndimage.measurements.label()` on the integrated heatmap from all six frames:
-![alt text][image6]
-
-### Here the resulting bounding boxes are drawn onto the last frame in the series:
-![alt text][image7]
-
-
+![alt text][v1]
+![alt text][v2]
+![alt text][v3]
+![alt text][v4]
+![alt text][v5]
+![alt text][v6]
 
 ---
 
 ###Discussion
 
 ####1. Briefly discuss any problems / issues you faced in your implementation of this project.  Where will your pipeline likely fail?  What could you do to make it more robust?
-
-Here I'll talk about the approach I took, what techniques I used, what worked and why, where the pipeline might fail and how I might improve it if I were going to pursue this project further. 
 
 My main difficulty was by getting worse result while using the extra non HOG features, which I'm still not completely sure why.
 In theory, using the color_his features should help even better to discard false positives, as some of the current false positives that randomly have the same HOG features, will probably will not also have the same color_his features.
